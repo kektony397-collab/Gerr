@@ -13,6 +13,11 @@ const useGeolocation = (
   const [error, setError] = useState<GpsError | null>(null);
   const [isAvailable, setIsAvailable] = useState(false);
 
+  // By stringifying the options, we create a stable dependency for useEffect.
+  // This prevents the hook from tearing down and re-creating the geolocation
+  // watch on every render, which was the likely cause of the flickering.
+  const optionsString = JSON.stringify(options);
+
   useEffect(() => {
     if (!('geolocation' in navigator)) {
       setError({
@@ -24,6 +29,8 @@ const useGeolocation = (
     }
 
     setIsAvailable(true);
+
+    const watchOptions = JSON.parse(optionsString);
 
     const watchId = navigator.geolocation.watchPosition(
       (pos) => {
@@ -41,14 +48,15 @@ const useGeolocation = (
           message: err.message,
         });
       },
-      options,
+      watchOptions, // Use the parsed options
     );
 
     // Cleanup function to clear the watch when the component unmounts
     return () => {
       navigator.geolocation.clearWatch(watchId);
     };
-  }, [options]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [optionsString]); // Dependency is now the stable string
 
   return { position, error, isAvailable };
 };
