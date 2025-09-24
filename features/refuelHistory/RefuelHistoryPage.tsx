@@ -83,7 +83,7 @@ function RefuelHistoryPage() {
           </Card>
         </div>
         <div className="md:col-span-2">
-          <Card className="items-start">
+          <Card>
             <HistoryList />
           </Card>
         </div>

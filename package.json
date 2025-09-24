@@ -9,15 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react-router-dom": "^7.9.2",
-    "react-dom": "^19.1.1",
-    "kalman-filter": "^2.3.0",
-    "react": "^19.1.1",
-    "zustand": "^5.0.8",
-    "@headlessui/react": "^2.2.8",
-    "dexie": "^4.2.0",
-    "dexie-react-hooks": "^4.2.0",
-    "react-window": "^2.1.1"
+    "react-router-dom": "^6.25.1",
+    "react-dom": "^18.3.1",
+    "kalman-filter": "^2.0.0",
+    "react": "^18.3.1",
+    "zustand": "^4.5.4",
+    "@headlessui/react": "^2.1.2",
+    "dexie": "^4.0.8",
+    "dexie-react-hooks": "^1.1.7",
+    "react-window": "^1.8.10"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
