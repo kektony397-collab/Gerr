@@ -1,9 +1,10 @@
-
 import React from 'react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../../../services/db';
-import { FixedSizeList as List } from 'react-window';
+import * as ReactWindow from 'react-window';
 import { formatDate, formatCurrency } from '../../../lib/formatters';
+
+const List = ReactWindow.FixedSizeList;
 
 function HistoryList() {
   // useLiveQuery creates a reactive subscription to the database.
